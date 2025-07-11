@@ -1,0 +1,12 @@
+# Maven
+/target/
+
+# IntelliJ
+/.idea/
+
+# Node
+frontend/node_modules/
+frontend/build/
+
+# Misc
+.DS_Store
