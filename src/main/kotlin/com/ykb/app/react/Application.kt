@@ -6,7 +6,7 @@ import org.springframework.boot.runApplication
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @SpringBootApplication(scanBasePackages = ["com.ykb.app.react"])
-@EnableJpaRepositories(basePackages = ["com.ykb.app.react.data.dao"])
+@EnableJpaRepositories(basePackages = ["com.ykb.app.react.data.repo"])
 @EntityScan(basePackages = ["com.ykb.app.react.data.model"])
 class SimpleReactApplication
 
