@@ -7,20 +7,22 @@ function Login() {
     return (
         <>
             <div className="vcon-cen-cen" style={{ height: "100vh" }}>
-                <form className="login-form" style={{ width: '400px' }} method="post" action="/api/authenticate">
-                    <h2>Please sign in</h2>
-                    <p>
-                        <label htmlFor="username" className="screenreader">Username</label>
-                        <input type="text" id="username" name="username" placeholder="Username" required autoFocus/>
-                    </p>
-                    <p>
-                        <label htmlFor="password" className="screenreader">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Password" required/>
-                    </p>
-                    { isError && error() }
-                    <button type="submit" className="primary">Sign in</button>
-                </form>
-                <button className="primary">Sign in</button>
+                <div className="vcon-fs-fs" style={{ width: '400px' }}>
+                    <form method="post" action="/api/authenticate" style={{ width: '100%' }}>
+                        <h2>Please sign in</h2>
+                        <p>
+                            <label htmlFor="username" className="screenreader">Username</label>
+                            <input type="text" id="username" name="username" placeholder="Username" required autoFocus/>
+                        </p>
+                        <p>
+                            <label htmlFor="password" className="screenreader">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Password" required/>
+                        </p>
+                        { isError && error() }
+                        <button type="submit" className="primary">Sign in</button>
+                    </form>
+                    <button className="primary" style={{ width: '100%' }}>Sign up</button>
+                </div>
             </div>
         </>
     )

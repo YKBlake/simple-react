@@ -4,6 +4,7 @@ import com.ykb.app.react.data.dao.AccountDao
 import com.ykb.app.react.data.model.Account
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.provisioning.UserDetailsManager
 import org.springframework.stereotype.Service
@@ -16,7 +17,10 @@ class AccountManager(
 
     override fun loadUserByUsername(username: String?): UserDetails? {
         stringValidation(username)
-        return dao.findByUsername(username!!)
+        val account = dao.findByUsername(username!!)
+        if (account == null)
+            throw UsernameNotFoundException("account '{$username}' not found")
+        return account
     }
 
     override fun createUser(user: UserDetails?) {
@@ -46,7 +50,8 @@ class AccountManager(
     }
 
     override fun userExists(username: String?): Boolean {
-        return loadUserByUsername(username) != null
+        stringValidation(username)
+        return dao.findByUsername(username!!) != null
     }
 
     private fun entityValidation(user: UserDetails?) {

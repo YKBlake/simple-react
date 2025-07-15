@@ -24,6 +24,13 @@ class AuthConfig {
                     .defaultSuccessUrl("/", true)
                     .failureUrl("/login?error")
             }
+            .logout {
+                it
+                    .logoutUrl("/api/logout")
+                    .logoutSuccessUrl("/login")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
+            }
             .authorizeHttpRequests {
                 it
                     .requestMatchers(HttpMethod.GET,"/index.html", "/login", "/assets/**").permitAll()
