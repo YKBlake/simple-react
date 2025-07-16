@@ -1,8 +1,13 @@
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 function Login() {
-    const [searchParams] = useSearchParams();
-    const isError = searchParams.get('error') != null;
+    const [searchParams] = useSearchParams()
+    const isError = searchParams.get('error') != null
+
+    const navigate = useNavigate()
+    const navigateToSignUp = () => {
+        navigate("/register")
+    }
 
     return (
         <>
@@ -21,7 +26,7 @@ function Login() {
                         { isError && error() }
                         <button type="submit" className="primary">Sign in</button>
                     </form>
-                    <button className="primary" style={{ width: '100%' }}>Sign up</button>
+                    <button className="primary" style={{ width: '100%' }} onClick={navigateToSignUp}>Sign up</button>
                 </div>
             </div>
         </>

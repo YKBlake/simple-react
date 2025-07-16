@@ -33,7 +33,7 @@ class Account(
     val iban: String = generateIbanNumber()
 
     @Column(name = "BALANCE", columnDefinition = "BIGINT", nullable = false)
-    val balance: Long = 0L
+    private var balance: Long = 0L
 
     constructor() : this("", "", mutableListOf())
 
@@ -46,6 +46,18 @@ class Account(
             .flatMap { r -> r.getAuthorities().stream() }
             .distinct()
             .toList()
+    }
+
+    fun addBalance(toBeAdded: Long) {
+        balance+=toBeAdded
+    }
+
+    fun reduceBalance(toBeReduced: Long) {
+        balance-=toBeReduced
+    }
+
+    fun getBalance(toBeAdded: Long) : Long {
+        return balance
     }
 
     fun setUsername(username: String) {

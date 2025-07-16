@@ -25,7 +25,9 @@ class AccountManager(
 
     override fun createUser(user: UserDetails?) {
         entityValidation(user)
-        (user as Account).password = passwordEncoder.encode(user.password)
+        if(userExists((user as Account).username))
+            throw IllegalArgumentException("Account with username[${user.username}] already exists")
+        user.password = passwordEncoder.encode(user.password)
         dao.save(user)
     }
 

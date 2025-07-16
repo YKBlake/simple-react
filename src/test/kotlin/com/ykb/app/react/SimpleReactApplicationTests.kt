@@ -14,10 +14,15 @@ class SimpleReactApplicationTests {
 	lateinit var accountManager: AccountManager
 
 	@Test
-	fun createAdminUser() {
+	fun createUser() {
 		accountManager.createUser(
 			Account("Kaan", "1234", emptyList<Role>().toMutableList())
 		)
+	}
+
+	@Test
+	fun deleteUser() {
+		accountManager.deleteUser("Kaan")
 	}
 
 }

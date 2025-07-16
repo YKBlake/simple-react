@@ -33,8 +33,8 @@ class AuthConfig {
             }
             .authorizeHttpRequests {
                 it
-                    .requestMatchers(HttpMethod.GET,"/index.html", "/login", "/assets/**").permitAll()
-                    .requestMatchers(HttpMethod.POST,"/error", "/api/authenticate").permitAll()
+                    .requestMatchers(HttpMethod.GET,"/index.html", "/login", "/register", "/assets/**").permitAll()
+                    .requestMatchers(HttpMethod.POST,"/error", "/api/authenticate", "/api/account/add").permitAll()
                     .anyRequest().authenticated()
             }
             .build()

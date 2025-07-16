@@ -3,6 +3,7 @@ package com.ykb.app.react.data.repo
 import com.ykb.app.react.data.model.Account
 import jakarta.transaction.Transactional
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
 
@@ -13,7 +14,8 @@ interface AccountRepo : JpaRepository<Account, String> {
     fun findByUsername(username: String): Account?
 
     @Transactional
+    @Modifying
     @Query("delete from Account c where c.username = :username")
-    fun deleteByUsername(username: String): Account?
+    fun deleteByUsername(username: String)
 
 }
