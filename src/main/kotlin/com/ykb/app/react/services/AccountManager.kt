@@ -66,4 +66,35 @@ class AccountManager(
             throw IllegalArgumentException("Parameter cannot be null or empty")
     }
 
+    fun deposit(account: Account, amount: Double) {
+        if(amount <= 0.0)
+            throw IllegalArgumentException("Amount should be positive")
+        account.addBalance(amount)
+        dao.save(account)
+    }
+
+    fun withdraw(account: Account, amount: Double) {
+        if(amount <= 0.0)
+            throw IllegalArgumentException("Amount should be positive")
+
+        if(account.getBalance() < amount)
+            throw IllegalArgumentException("Insufficient funds")
+
+        account.reduceBalance(amount)
+        dao.save(account)
+    }
+
+    fun transfer(sendingAccount: Account, receivingAccountIban: String, amountToBeTransferred: Double) {
+        if(sendingAccount.getBalance() < amountToBeTransferred)
+            throw IllegalArgumentException("Insufficient funds")
+
+        val receivingAccount = dao.findById(receivingAccountIban)
+        if(receivingAccount==null)
+            throw IllegalArgumentException("Receiving account '{$receivingAccountIban}' not found")
+
+        sendingAccount.reduceBalance(amountToBeTransferred)
+        receivingAccount.addBalance(amountToBeTransferred)
+        dao.saveAll(listOf(sendingAccount, receivingAccount))
+    }
+
 }

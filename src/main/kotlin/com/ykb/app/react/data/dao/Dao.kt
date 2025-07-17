@@ -27,8 +27,8 @@ open class Dao<T : Any, ID : Any>(
         repo.saveAll(list)
     }
 
-    fun findById(id: ID): Optional<T> {
-        return repo.findById(id)
+    fun findById(id: ID): T? {
+        return repo.findById(id).orElse(null)
     }
 
     fun findAll(): List<T> {

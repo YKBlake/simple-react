@@ -32,8 +32,8 @@ class Account(
     @Column(name = "IBAN", columnDefinition = "VARCHAR(34)")
     val iban: String = generateIbanNumber()
 
-    @Column(name = "BALANCE", columnDefinition = "BIGINT", nullable = false)
-    private var balance: Long = 0L
+    @Column(name = "BALANCE", columnDefinition = "DOUBLE", nullable = false)
+    private var balance: Double = 0.0
 
     constructor() : this("", "", mutableListOf())
 
@@ -48,15 +48,15 @@ class Account(
             .toList()
     }
 
-    fun addBalance(toBeAdded: Long) {
+    fun addBalance(toBeAdded: Double) {
         balance+=toBeAdded
     }
 
-    fun reduceBalance(toBeReduced: Long) {
+    fun reduceBalance(toBeReduced: Double) {
         balance-=toBeReduced
     }
 
-    fun getBalance(toBeAdded: Long) : Long {
+    fun getBalance() : Double {
         return balance
     }
 

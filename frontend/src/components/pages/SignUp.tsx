@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react"
 
 function SignUp() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
 
     const handleSignUp = async (event: React.FormEvent) => {
-        event.preventDefault();
+        event.preventDefault()
         try {
-            const response = await fetch(`/api/account/add?username=${username}&password=${password}`, { method: "POST" });
+            const response = await fetch(`/api/account/add?username=${username}&password=${password}`, { method: "POST" })
 
             if (!response.ok) {
                 alert(`There is an account with username: ${username}`)
@@ -20,7 +19,7 @@ function SignUp() {
             console.log(err)
             alert("Network error. Please try again.")
         }
-    };
+    }
 
     return (
         <>
