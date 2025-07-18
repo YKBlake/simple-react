@@ -22,7 +22,7 @@ class SimpleReactApplicationTests {
 
 	@Test
 	fun deleteUser() {
-		accountManager.deleteUser("Kaan")
+		accountManager.deleteUser("Elif")
 	}
 
 }

@@ -14,6 +14,7 @@ function SignUp() {
                 return
             }
 
+            alert('Successfully signed up!')
             window.location.href = "/login"
         } catch (err) {
             console.log(err)
