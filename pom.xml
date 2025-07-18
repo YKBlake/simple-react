@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ykb.app</groupId>
-	<artifactId>simple-react</artifactId>
+	<artifactId>spring-react</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>simple-react</name>
-	<description>A simple react demo for beginners</description>
+	<name>spring-react</name>
+	<description>A spring react demo for beginners</description>
 	<url/>
 	<licenses>
 		<license/>

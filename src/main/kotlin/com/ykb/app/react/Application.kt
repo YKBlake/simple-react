@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 @SpringBootApplication(scanBasePackages = ["com.ykb.app.react"])
 @EnableJpaRepositories(basePackages = ["com.ykb.app.react.data.repo"])
 @EntityScan(basePackages = ["com.ykb.app.react.data.model"])
-class SimpleReactApplication
+class Application
 
 fun main(args: Array<String>) {
-	runApplication<SimpleReactApplication>(*args)
+	runApplication<Application>(*args)
 }
